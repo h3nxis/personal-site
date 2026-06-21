@@ -124,3 +124,49 @@
         resizeTimer = window.setTimeout(setupAllMarquees, 160);
     });
 })();
+// اسکرول ریویل: انیمیشن‌های ظاهری هنگام اسکرول کردن
+function setupScrollReveal() {
+    const targets = document.querySelectorAll([
+        ".hero-copy",
+        ".hero-projects",
+        ".marquee",
+        ".section-heading",
+        ".feature-card",
+        ".glass-panel",
+        ".footer-brand-box",
+        ".footer-links",
+        ".footer-contact"
+    ].join(","));
+
+    if (!targets.length) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        targets.forEach((item) => item.classList.add("is-visible"));
+        return;
+    }
+
+    targets.forEach((item, index) => {
+        item.classList.add("reveal-on-scroll");
+
+        const delay = Math.min((index % 5) * 0.06, 0.24);
+        item.style.setProperty("--reveal-delay", `${delay}s`);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -70px 0px"
+    });
+
+    targets.forEach((item) => observer.observe(item));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    setupScrollReveal();
+});
