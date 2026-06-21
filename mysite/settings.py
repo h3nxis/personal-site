@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [
     "nemidannam.ir",
     "www.nemidannam.ir",
     "31.15.17.79",
+    "127.0.0.1",
 ]
 CSRF_TRUSTED_ORIGINS = [
     "http://nemidannam.ir",

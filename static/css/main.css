@@ -1995,3 +1995,316 @@ body::after {
         transition: none;
     }
 }
+/* Header spacing fix */
+body {
+    padding-top: 0;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 18px 0;
+    background: rgba(0, 0, 0, 0.58);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+}
+
+.nav-container {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-main {
+    padding-top: 64px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 0;
+    }
+
+    .site-header {
+        padding: 12px 0;
+    }
+
+    .nav-container {
+        min-height: auto;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .brand-logo {
+        max-width: 72px;
+    }
+
+    .main-nav {
+        width: min(100%, 360px);
+        margin: 0 auto;
+    }
+
+    .site-main {
+        padding-top: 24px;
+    }
+
+    .hero-section {
+        padding-top: 0;
+    }
+}
+/* Darker background lights - UI friendly */
+body {
+    background:
+        radial-gradient(circle at 78% 12%, rgba(35, 88, 130, 0.10), transparent 34%),
+        radial-gradient(circle at 10% 72%, rgba(85, 45, 120, 0.09), transparent 36%),
+        radial-gradient(circle at 52% 92%, rgba(120, 82, 28, 0.045), transparent 32%),
+        var(--black);
+}
+
+body::before {
+    width: 360px;
+    height: 360px;
+    top: 8%;
+    right: 4%;
+    background: rgba(35, 88, 130, 0.18);
+    opacity: 0.28;
+    filter: blur(82px);
+}
+
+body::after {
+    width: 420px;
+    height: 420px;
+    left: -160px;
+    bottom: 8%;
+    background: rgba(80, 42, 120, 0.16);
+    opacity: 0.24;
+    filter: blur(88px);
+}
+
+.dot-field {
+    opacity: 0.48;
+}
+
+.dot-field::before {
+    background: rgba(255, 255, 255, 0.035);
+    opacity: 0.45;
+}
+
+.dot-field::after {
+    background: rgba(120, 82, 28, 0.06);
+    opacity: 0.38;
+}
+/* Footer spacing fix */
+.site-purpose-section {
+    padding-bottom: 48px;
+}
+
+.built-with-line {
+    margin: 38px auto 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-purpose-section .container {
+    text-align: center;
+}
+
+.site-footer {
+    margin-top: 0;
+    padding-top: 56px;
+    padding-bottom: 56px;
+}
+/* Final footer gap + scroll button fix */
+.site-main {
+    padding-bottom: 0 !important;
+}
+
+.site-purpose-section {
+    padding-bottom: 36px !important;
+    margin-bottom: 0 !important;
+}
+
+.site-purpose-section .container {
+    padding-bottom: 0 !important;
+}
+
+.built-with-line {
+    margin: 28px auto 0 !important;
+}
+
+.site-footer {
+    margin-top: 0 !important;
+    padding-top: 36px !important;
+    padding-bottom: 36px !important;
+}
+
+.footer-layout {
+    align-items: center;
+}
+
+/* Keep scroll-to-top button fully inside viewport */
+.scroll-top {
+    position: fixed !important;
+    right: 22px !important;
+    bottom: 22px !important;
+    width: 48px !important;
+    height: 48px !important;
+    z-index: 9999 !important;
+    transform: translateY(18px) scale(0.96);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scroll-top.is-visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .site-purpose-section {
+        padding-bottom: 28px !important;
+    }
+
+    .built-with-line {
+        margin-top: 22px !important;
+    }
+
+    .site-footer {
+        padding-top: 30px !important;
+        padding-bottom: 34px !important;
+    }
+
+    .scroll-top {
+        right: 14px !important;
+        bottom: 14px !important;
+        width: 44px !important;
+        height: 44px !important;
+    }
+}
+/* Final fix: remove unwanted header/footer bars */
+.site-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 80 !important;
+    padding: 16px 0 !important;
+    background: transparent !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+body.is-scrolled .site-header,
+body.scroll-down .site-header,
+body.scroll-up .site-header {
+    background: transparent !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+}
+
+.nav-container {
+    min-height: 64px !important;
+    align-items: center !important;
+}
+
+/* فقط خود منو شیشه‌ای باشد، نه کل نوار بالا */
+.main-nav {
+    background: rgba(8, 8, 8, 0.56) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28) !important;
+}
+
+/* حذف نوار اضافه نزدیک footer */
+.site-footer {
+    margin-top: 0 !important;
+    background: rgba(0, 0, 0, 0.18) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.055) !important;
+    box-shadow: none !important;
+}
+
+.site-main {
+    padding-bottom: 0 !important;
+}
+
+.section-block:last-of-type,
+.site-purpose-section {
+    margin-bottom: 0 !important;
+    padding-bottom: 34px !important;
+}
+/* Darker and cleaner background colors */
+body {
+    background:
+        radial-gradient(circle at 78% 12%, rgba(22, 62, 92, 0.075), transparent 36%),
+        radial-gradient(circle at 8% 70%, rgba(58, 28, 86, 0.065), transparent 38%),
+        radial-gradient(circle at 52% 92%, rgba(70, 48, 20, 0.035), transparent 34%),
+        #020202 !important;
+}
+
+body::before {
+    background: rgba(24, 70, 104, 0.13) !important;
+    opacity: 0.18 !important;
+    filter: blur(96px) !important;
+}
+
+body::after {
+    background: rgba(70, 34, 104, 0.11) !important;
+    opacity: 0.16 !important;
+    filter: blur(100px) !important;
+}
+
+.dot-field {
+    opacity: 0.34 !important;
+}
+
+.dot-field::before {
+    background: rgba(255, 255, 255, 0.022) !important;
+    opacity: 0.34 !important;
+}
+
+.dot-field::after {
+    background: rgba(90, 58, 24, 0.035) !important;
+    opacity: 0.28 !important;
+}
+@media (max-width: 768px) {
+    .site-header {
+        padding: 12px 0 !important;
+    }
+
+    .nav-container {
+        min-height: auto !important;
+        gap: 12px !important;
+    }
+
+    .main-nav {
+        width: min(100%, 360px) !important;
+        background: rgba(8, 8, 8, 0.62) !important;
+    }
+
+    body {
+        background:
+            radial-gradient(circle at 86% 8%, rgba(22, 62, 92, 0.055), transparent 38%),
+            radial-gradient(circle at 0% 70%, rgba(58, 28, 86, 0.05), transparent 40%),
+            #020202 !important;
+    }
+
+    body::before,
+    body::after {
+        opacity: 0.12 !important;
+        filter: blur(82px) !important;
+    }
+
+    .site-purpose-section {
+        padding-bottom: 28px !important;
+    }
+
+    .site-footer {
+        padding-top: 34px !important;
+        padding-bottom: 34px !important;
+    }
+}
