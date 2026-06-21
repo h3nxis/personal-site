@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}پروژه‌ها | سایت شخصی حسن{% endblock %}
+{% block body_class %}projects-page{% endblock %}
+
+{% block content %}
+<section class="page-hero compact">
+    <div class="container page-hero-grid compact-grid">
+        <div class="page-copy">
+            <span class="section-kicker">Portfolio</span>
+            <h1>پروژه‌های من</h1>
+            <p>
+                پروژه‌هایی که در Django Admin ثبت می‌کنی از دیتابیس خوانده می‌شوند و اینجا نمایش داده می‌شوند.
+            </p>
+        </div>
+        <div class="page-logo-card small-logo-card glass-panel">
+            <img src="{% static 'images/hir-logo-transparent.png' %}" alt="HIR Logo">
+        </div>
+    </div>
+</section>
+
+<section class="section-block project-list-section">
+    <div class="container">
+        <div class="project-grid">
+            {% for project in projects %}
+                <article class="project-card glass-panel">
+                    <div class="project-card-top">
+                        {% if project.is_featured %}
+                            <span class="project-badge">Featured</span>
+                        {% else %}
+                            <span class="project-badge muted-badge">Project</span>
+                        {% endif %}
+                        <span>{{ project.created_at|date:"Y/m/d" }}</span>
+                    </div>
+
+                    <h2>{{ project.title }}</h2>
+                    <p>{{ project.short_description }}</p>
+
+                    <div class="project-actions">
+                        <a href="{{ project.get_absolute_url }}">جزئیات</a>
+                        {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank" rel="noreferrer">GitHub</a>
+                        {% endif %}
+                        {% if project.live_url %}
+                            <a href="{{ project.live_url }}" target="_blank" rel="noreferrer">Demo</a>
+                        {% endif %}
+                    </div>
+                </article>
+            {% empty %}
+                <div class="empty-state glass-panel">
+                    <h2>هنوز پروژه‌ای ثبت نشده</h2>
+                    <p>از پنل Django Admin چند پروژه اضافه کن تا اینجا نمایش داده شوند.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

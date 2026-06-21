@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}خانه | سایت شخصی حسن{% endblock %}
+{% block body_class %}home-page{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <div class="status-line">
+                <span></span>
+                در حال توسعه
+            </div>
+
+            <h1>
+                سلام، من حسن هستم؛
+                <strong>Backend Developer</strong>
+                در مسیر رشد.
+            </h1>
+
+            <p class="hero-description">
+
+            </p>
+
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="{% url 'portfolio:project_list' %}">مشاهده پروژه‌ها</a>
+                <a class="btn btn-outline" href="{% url 'core:about' %}">درباره من</a>
+            </div>
+
+            <div class="hero-metrics">
+                <div>
+                    <b>+20</b>
+                    <span>پروژه عملی</span>
+                </div>
+                <div>
+                    <b>+10</b>
+                    <span>مهارت اصلی</span>
+                </div>
+                <div>
+                    <b>100%</b>
+                    <span>تمرین عملی</span>
+                </div>
+            </div>
+        </div>
+
+        <aside class="hero-projects glass-panel">
+            <div class="hero-projects-head">
+                <span>Featured Work</span>
+                <a class="text-link" href="{% url 'portfolio:project_list' %}">همه</a>
+            </div>
+
+            <div class="hero-projects-list">
+                {% for project in featured_projects %}
+                    <a class="hero-project" href="{{ project.get_absolute_url }}">
+                        <b>{{ forloop.counter|stringformat:"02d" }}</b>
+                        <div class="hero-project-info">
+                            <strong>{{ project.title }}</strong>
+                            <span>{{ project.short_description }}</span>
+                        </div>
+                        <em class="hero-project-arrow" aria-hidden="true">↗</em>
+                    </a>
+                {% empty %}
+                    <div class="hero-projects-empty">
+                        <strong>هنوز پروژه‌ای ثبت نشده</strong>
+                    </div>
+                {% endfor %}
+            </div>
+        </aside>
+    </div>
+</section>
+
+<div class="marquee" aria-label="مهارت‌ها">
+    <div class="marquee-track">
+        <div class="marquee-group">
+            <span class="marquee-item" data-label="Python">Python</span>
+            <span class="marquee-item" data-label="Django">Django</span>
+            <span class="marquee-item" data-label="PostgreSQL">PostgreSQL</span>
+            <span class="marquee-item" data-label="Backend">Backend</span>
+            <span class="marquee-item" data-label="REST API">REST API</span>
+            <span class="marquee-item" data-label="HTML">HTML</span>
+            <span class="marquee-item" data-label="CSS">CSS</span>
+            <span class="marquee-item" data-label="Linux">Linux</span>
+            <span class="marquee-item" data-label="Git">Git</span>
+            <span class="marquee-item" data-label="NumPy">NumPy</span>
+            <span class="marquee-item" data-label="Pandas">Pandas</span>
+            <span class="marquee-item" data-label="Matplotlib">Matplotlib</span>
+            <span class="marquee-item" data-label="AI">AI</span>
+        </div>
+    </div>
+</div>
+
+<section class="section-block site-purpose-section">
+    <div class="container">
+        <div class="section-heading site-purpose-heading">
+            <span>هدف سایت</span>
+            <h2>آشنایی با من و مهارت‌های من</h2>
+            <p>
+                هدف این سایت معرفی من، نمایش مهارت‌ها، پروژه‌های عملی و مسیر رشد من در توسعه وب است.
+                اینجا قرار است مخاطب سریع بفهمد چه چیزهایی بلدم، چه ساخته‌ام و چطور می‌تواند با من آشنا شود.
+            </p>
+        </div>
+
+        <div class="feature-grid purpose-grid">
+            <article class="feature-card glass-panel">
+                <span class="card-index">01</span>
+                <h3>آشنایی با من</h3>
+                <p>معرفی کوتاه، مسیر یادگیری، تمرکز کاری و ابزارهایی که با آن‌ها کار می‌کنم.</p>
+            </article>
+
+            <article class="feature-card glass-panel">
+                <span class="card-index">02</span>
+                <h3>مهارت‌های من</h3>
+                <p>نمایش مهارت‌های اصلی مثل Python، pandas، Linux، numpy و ابزارهای داده.</p>
+            </article>
+
+            <article class="feature-card glass-panel">
+                <span class="card-index">03</span>
+                <h3>پروژه‌های عملی</h3>
+                <p>نمایش پروژه‌هایی که ساخته‌ام یا در حال ساختشان هستم، با توضیح و لینک‌های مربوط.</p>
+            </article>
+        </div>
+
+        <p class="built-with-line">با Django ساخته شده.</p>
+    </div>
+</section>
+{% endblock %}

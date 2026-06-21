@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ project.title }} | سایت شخصی حسن{% endblock %}
+{% block body_class %}project-detail-page{% endblock %}
+
+{% block content %}
+<section class="page-hero compact">
+    <div class="container project-detail-hero">
+        <div class="page-copy">
+            <span class="section-kicker">Project Detail</span>
+            <h1>{{ project.title }}</h1>
+            <p>{{ project.short_description }}</p>
+        </div>
+        <div class="detail-actions">
+            {% if project.github_url %}
+                <a class="btn btn-outline" href="{{ project.github_url }}" target="_blank" rel="noreferrer">GitHub</a>
+            {% endif %}
+            {% if project.live_url %}
+                <a class="btn btn-primary" href="{{ project.live_url }}" target="_blank" rel="noreferrer">Live Demo</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="section-block">
+    <div class="container detail-layout">
+        <article class="detail-content glass-panel">
+            <h2>توضیح پروژه</h2>
+            <p>{{ project.description|linebreaksbr }}</p>
+        </article>
+
+        <aside class="detail-sidebar glass-panel">
+            <img src="{% static 'images/hir-logo-small.png' %}" alt="HIR" class="sidebar-logo">
+            <h3>اطلاعات پروژه</h3>
+            <div class="info-row">
+                <span>وضعیت</span>
+                <b>{% if project.is_featured %}منتخب{% else %}عادی{% endif %}</b>
+            </div>
+            <div class="info-row">
+                <span>ساخته شده</span>
+                <b>{{ project.created_at|date:"Y/m/d" }}</b>
+            </div>
+            <div class="info-row">
+                <span>آخرین تغییر</span>
+                <b>{{ project.updated_at|date:"Y/m/d" }}</b>
+            </div>
+            <a class="text-link" href="{% url 'portfolio:project_list' %}">بازگشت به پروژه‌ها</a>
+        </aside>
+    </div>
+</section>
+{% endblock %}
