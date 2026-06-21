@@ -1804,3 +1804,38 @@ body.scroll-down .site-header {
         margin: 0 auto 18px;
     }
 }
+@media (max-width: 768px) {
+    body {
+        padding-top: 150px;
+    }
+
+    .site-header {
+        min-height: auto;
+        padding: 12px 0;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .main-nav {
+        position: relative;
+        width: calc(100vw - 32px);
+        max-width: 360px;
+        margin: 0 auto;
+        padding: 8px;
+        box-sizing: border-box;
+        z-index: 5;
+    }
+
+    .hero-section {
+        padding-top: 24px;
+    }
+
+    .hero-grid {
+        margin-top: 0;
+    }
+}
