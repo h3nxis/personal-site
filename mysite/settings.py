@@ -29,8 +29,20 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
-
+ALLOWED_HOSTS = [
+    "nemidannam.ir",
+    "www.nemidannam.ir",
+    "31.15.17.79",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "http://nemidannam.ir",
+    "http://www.nemidannam.ir",
+    "https://nemidannam.ir",
+    "https://www.nemidannam.ir",
+]
+# SECURE_SSL_REDIRECT = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
 # Application definition
 
