@@ -27,23 +27,10 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DJANGO_DEBUG", "True") == "True"
+DEBUG = False
 
-ALLOWED_HOSTS = [
-    "nemidannam.ir",
-    "www.nemidannam.ir",
-    "31.15.17.79",
-    "127.0.0.1",
-]
-CSRF_TRUSTED_ORIGINS = [
-    "http://nemidannam.ir",
-    "http://www.nemidannam.ir",
-    "https://nemidannam.ir",
-    "https://www.nemidannam.ir",
-]
-# SECURE_SSL_REDIRECT = True
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
+ALLOWED_HOSTS = ["31.15.17.79", "nemidannam.ir", "www.nemidannam.ir" ]
+
 
 # Application definition
 
@@ -98,15 +85,13 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("DATABASE_NAME", "personal_site_db"),
-        "USER": os.environ.get("DATABASE_USER", "personal_site_user"),
-        "PASSWORD": os.environ.get("DATABASE_PASSWORD", "strong_password_123"),
-        "HOST": os.environ.get("DATABASE_HOST", "localhost"),
-        "PORT": os.environ.get("DATABASE_PORT", "5432"),
+        "NAME": "personal_site_db",
+        "USER": "personal_site_user",
+        "PASSWORD": "!{Z767d4Z6o1j6:pzTeA",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
@@ -141,9 +126,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_URL = "/static/"
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
